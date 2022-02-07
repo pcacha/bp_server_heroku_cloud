@@ -114,13 +114,15 @@ public class BpServerApplication {
             }
 
             // add admin
-            User admin = new User();
-            admin.setUsername("admin");
-            admin.setEmail("admin@cts.com");
-            admin.setPassword(bCryptPasswordEncoder.encode("P4ssword"));
-            admin.getRoles().add(roleRepository.findByName(ROLE_TRANSLATOR).get());
-            admin.getRoles().add(roleRepository.findByName(ROLE_ADMIN).get());
-            userRepository.save(admin);
+            if(userRepository.count() == 0) {
+                User admin = new User();
+                admin.setUsername("admin");
+                admin.setEmail("admin@cts.com");
+                admin.setPassword(bCryptPasswordEncoder.encode("P4ssword"));
+                admin.getRoles().add(roleRepository.findByName(ROLE_TRANSLATOR).get());
+                admin.getRoles().add(roleRepository.findByName(ROLE_ADMIN).get());
+                userRepository.save(admin);
+            }
         };
     }
 }
