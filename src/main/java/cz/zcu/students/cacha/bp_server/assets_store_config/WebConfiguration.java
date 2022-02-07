@@ -96,7 +96,7 @@ public class WebConfiguration implements WebMvcConfigurer {
 
         if(!imageExists) {
             // insert image only if there is no default already
-            try(InputStream is =  getClass().getClassLoader().getResourceAsStream("static/" + DEFAULT_IMAGE)) {
+            try(InputStream is =  getClass().getClassLoader().getResourceAsStream(DEFAULT_IMAGE)) {
                 try(OutputStream os = new FileOutputStream(image)){
                     // copy image from static resources
                     IOUtils.copy(is, os);

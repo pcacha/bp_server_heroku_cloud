@@ -97,7 +97,7 @@ public class BpServerApplication {
 
             // if there are no languages in db insert them
             if(languageRepository.count() == 0) {
-                try(InputStream is =  getClass().getClassLoader().getResourceAsStream("static/language_codes.csv")) {
+                try(InputStream is =  getClass().getClassLoader().getResourceAsStream("language_codes.csv")) {
                     try(BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
                         // read languages file
                         while(reader.ready()) {
